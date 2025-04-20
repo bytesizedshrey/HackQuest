@@ -1,0 +1,117 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 252 94% 67%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 252 94% 67%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border selection:bg-cyber-lightPurple/10 selection:text-cyber-lightPurple;
+  }
+  
+  body {
+    @apply bg-cyber-black text-foreground antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-xl;
+  }
+  
+  .clay-card {
+    @apply bg-cyber-darkPurple rounded-2xl border-2 border-black/10 shadow-[5px_5px_0px_0px_rgba(0,0,0,0.2)];
+  }
+  
+  .neon-border {
+    @apply relative;
+  }
+  
+  .neon-border::before {
+    @apply content-[''] absolute -inset-0.5 rounded-lg bg-gradient-to-r from-cyber-neonPurple via-cyber-neonPink to-cyber-neonBlue opacity-70 blur pointer-events-none;
+  }
+  
+  .neon-text {
+    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonPurple to-cyber-neonPink;
+  }
+  
+  .neon-text-blue {
+    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonBlue to-cyber-neonGreen;
+  }
+  
+  .hover-scale {
+    @apply transition-all duration-300 hover:scale-105;
+  }
+  
+  .button-glow {
+    @apply relative overflow-hidden shadow-none transition-all duration-300;
+  }
+  
+  .button-glow:hover {
+    @apply shadow-neon-purple;
+  }
+  
+  .button-glow::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full;
+  }
+  
+  .button-glow:hover::before {
+    @apply animate-[shimmer_1.5s_infinite] duration-500;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cyber-darkPurple;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cyber-purple rounded-full;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-cyber-lightPurple;
+}
